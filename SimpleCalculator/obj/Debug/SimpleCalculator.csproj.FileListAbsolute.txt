@@ -1,0 +1,5 @@
+C:\Users\Michał\documents\visual studio 2017\Projects\SimpleCalculator\SimpleCalculator\bin\Debug\SimpleCalculator.exe.config
+C:\Users\Michał\documents\visual studio 2017\Projects\SimpleCalculator\SimpleCalculator\bin\Debug\SimpleCalculator.exe
+C:\Users\Michał\documents\visual studio 2017\Projects\SimpleCalculator\SimpleCalculator\bin\Debug\SimpleCalculator.pdb
+C:\Users\Michał\documents\visual studio 2017\Projects\SimpleCalculator\SimpleCalculator\obj\Debug\SimpleCalculator.exe
+C:\Users\Michał\documents\visual studio 2017\Projects\SimpleCalculator\SimpleCalculator\obj\Debug\SimpleCalculator.pdb
