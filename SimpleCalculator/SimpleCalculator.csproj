@@ -45,6 +45,7 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="ExpressionManaging.cs" />
     <Compile Include="Heap.cs" />
+    <Compile Include="MathFunction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

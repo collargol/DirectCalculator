@@ -47,6 +47,7 @@ namespace SimpleCalculator
 
         public static List<string> ExpressionToInfix(string inputExpression)
         {
+            inputExpression = inputExpression.Replace(" ", string.Empty);
             List<string> expression = inputExpression.Select(c => c.ToString()).ToList();
             List<string> separatedExpression = new List<string>();
             int currentPosition = 0;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Globalization;
@@ -15,6 +16,9 @@ namespace SimpleCalculator
             // to change language of exceptions' messages ;)
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
             // 
+            // testing functions!!!
+            string test = "field(a, b, h) = (a + b)*h/2";
+            MathFunction func = new MathFunction(test);
 
             for (;;)
             {

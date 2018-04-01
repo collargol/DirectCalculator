@@ -1,6 +1,5 @@
 C:\Users\Michał\Documents\Visual Studio 2017\Projects\SimpleCalculator\SimpleCalculator\bin\Release\SimpleCalculator.exe.config
 C:\Users\Michał\Documents\Visual Studio 2017\Projects\SimpleCalculator\SimpleCalculator\bin\Release\SimpleCalculator.exe
 C:\Users\Michał\Documents\Visual Studio 2017\Projects\SimpleCalculator\SimpleCalculator\bin\Release\SimpleCalculator.pdb
-C:\Users\Michał\Documents\Visual Studio 2017\Projects\SimpleCalculator\SimpleCalculator\obj\Release\SimpleCalculator.csprojResolveAssemblyReference.cache
 C:\Users\Michał\Documents\Visual Studio 2017\Projects\SimpleCalculator\SimpleCalculator\obj\Release\SimpleCalculator.exe
 C:\Users\Michał\Documents\Visual Studio 2017\Projects\SimpleCalculator\SimpleCalculator\obj\Release\SimpleCalculator.pdb
