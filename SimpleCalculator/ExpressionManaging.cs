@@ -56,7 +56,7 @@ namespace SimpleCalculator
                 if (IsMathOperator(expression[i]) || IsBracket(expression[i]))
                 {
                     separatedExpression.Add(expression[i]);
-                    if (IsMathOperator(expression[i - 1]) || IsBracket(expression[i - 1]))
+                    if ((i == 0) || IsMathOperator(expression[i - 1]) || IsBracket(expression[i - 1]))
                     {
                         currentPosition++;
                     }

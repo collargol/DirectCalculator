@@ -22,7 +22,7 @@ namespace SimpleCalculator
         }
 
         public string Name { get; private set; }
-        public string Formula { get; private set; }
+        public List<string> Formula { get; private set; }
         public List<MathVariable> Variables { get; private set; }
 
         public MathFunction(string inputExpression)
@@ -31,25 +31,71 @@ namespace SimpleCalculator
             inputExpression = inputExpression.Replace(" ", string.Empty);
             Name = Regex.Match(inputExpression, @"^([^()]*)\(").Groups[1].Value;
             // Variables
-            string variables = Regex.Match(inputExpression, @"\(([^()]*)\)").Groups[1].Value;
+            Variables = GetVariablesList(inputExpression);
+            // Formula
+            string rawFormula = Regex.Match(inputExpression, @"(?<==).*$").Value;
+            List<string> infixFormula = ExpressionManaging.ExpressionToInfix(rawFormula);
+            Formula = ExpressionManaging.InfixToPostfix(infixFormula);
+        }
+
+        public double ComputeFunction(List<double> variablesValues)
+        {
+            if (variablesValues.Count > Variables.Count)
+            {
+                throw new ArgumentException("Too much arguments.");
+            }
+            else if (variablesValues.Count < Variables.Count)
+            {
+                throw new ArgumentException("Not enough arguments.");
+            }
+            else
+            {
+                List<string> tempFormula = Formula;
+                for (int i = 0; i < variablesValues.Count; i++)
+                {
+                    List<int> indexes = Enumerable.Range(0, tempFormula.Count).Where(j => tempFormula[j].Equals(Variables[i].Symbol)).ToList();
+                    foreach (int ind in indexes)
+                    {
+                        tempFormula[ind] = variablesValues[i].ToString();
+                    }
+                }
+                return Calculator.PerformCalculation(tempFormula);
+            }
+        }
+
+        static List<MathVariable> GetVariablesList(string inputExpression)
+        {
+            string variablesSection = Regex.Match(inputExpression, @"\(([^()]*)\)").Groups[1].Value;
             string pattern = @"[,]*";
             Regex R = new Regex(pattern);
-            variables = R.Replace(variables, @"");
-            
-            Variables = new List<MathVariable>();
-            foreach (string variable in variables.Select(c => c.ToString()).ToList())
+            variablesSection = R.Replace(variablesSection, @" ");
+            List<MathVariable> variables = new List<MathVariable>();
+            string temp = "";
+            foreach (string v in variablesSection.Select(c => c.ToString()).ToList())
             {
-                Variables.Add(new MathVariable(variable));
+                if (v.Equals(" "))
+                {
+                    if (!temp.Equals(""))
+                    {
+                        variables.Add(new MathVariable(temp));
+                        temp = "";
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    temp += v;
+                }
             }
-            // Formula
-            Formula = Regex.Match(inputExpression, @"(?<==).*$").Value;
-
-            foreach (var i in Variables)
+            if (!temp.Equals(""))
             {
-                Console.WriteLine(i.Symbol + "   " + i.Value.ToString());
+                variables.Add(new MathVariable(temp));
             }
-            Console.WriteLine(Formula);
-            Console.WriteLine(Name);
+            return variables;
         }
+
     }
 }
